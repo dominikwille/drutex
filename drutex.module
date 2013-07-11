@@ -359,8 +359,8 @@ function _drutex_weight_sort_cmp($a, $b) {
  */
 function _drutex_create_regex($entity, $filter, $format) {
   $pattern = $entity->pattern;
-  $replacement = preg_replace(array('@\'<var>([^<]+)</var>\'@se'), array('$1'), $entity->replacement);
-
+  //$replacement = preg_replace(array('@\'<var>([^<]+)</var>\'@se'), array('$1'), $entity->replacement);
+  $replacement = preg_replace(array('~\'<var>([^<]+)</var>\'~'), array('$1'), $entity->replacement);
   if (!isset($entity->type)) {
     $entity->type = 'regex';
   }

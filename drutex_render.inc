@@ -319,6 +319,7 @@ function drutex_render($text, $filter, $attributes = '', $default_attributes = '
       $anchor = "<a name=\"$id\" id=\"$id\"></a>";
     }
     else {
+      $id = false;
       $anchor = '';
     }
 

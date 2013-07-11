@@ -13,10 +13,10 @@
  */
 function drutex_linebreak_info($filter) {
   return (object) array(
-    'title' => t('Line break converter'),
-    'description' => check_plain(t('Converts line breaks into HTML (i.e. <br /> and <p> tags).')),
-    'toggle' => TRUE,
-    'weight' => 12,
+            'title' => t('Line break converter'),
+            'description' => check_plain(t('Converts line breaks into HTML (i.e. <br /> and <p> tags).')),
+            'toggle' => TRUE,
+            'weight' => 12,
   );
 }
 
@@ -46,7 +46,12 @@ function drutex_linebreak_defaults() {
  * Implements hook_node2html_postprocess().
  */
 function drutex_linebreak_node2html_postprocess($text, $filter) {
-  $method = $filter->settings['drutex_linebreak']['behaviour'];
+  if (isset($filter->settings)) {
+    $method = $filter->settings['drutex_linebreak']['behaviour'];
+  }
+  else {
+    $method = false;
+  }
 
   if ($method == 'drupal') {
     $text = _filter_autop($text);

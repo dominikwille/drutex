@@ -97,7 +97,7 @@ function _drutex_references($action, $id = '', $name = '') {
 
   switch ($action) {
     case 'get name by id':
-      return $id_cache[$id];
+      return isset($id_cache[$id]) ? $id_cache[$id] : false;
 
     case 'get array size':
       return count($id_cache);
